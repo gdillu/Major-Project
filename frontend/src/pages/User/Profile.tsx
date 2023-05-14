@@ -23,7 +23,6 @@ const Profile = (props: RouteProps) => {
         <span className="title-small">Profile</span>
         <div className="text-profile" >{authContext.id}</div>
         <div className="text-profile">{authContext.email}</div>
-        <div className="text-profile">{authContext.citizen}</div>
         
       </div>
     </div>

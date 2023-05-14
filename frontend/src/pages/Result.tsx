@@ -15,7 +15,7 @@ const Result = () => {
   }, []);
 
   if (loading) return <div></div>;
-
+  
   return (
     <Panel name={data.name} description={data.description}>
       <Chart votes={data.votes} />

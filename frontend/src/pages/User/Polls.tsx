@@ -8,6 +8,7 @@ import Waiting from "../../components/Waiting";
 import { AuthContext } from "../../contexts/Auth";
 import Result from "../Result";
 
+
 const User = () => {
   const [voteState, setVoteStatus] = useState<
     "finished" | "running" | "not-started" | "checking"
@@ -56,7 +57,7 @@ const User = () => {
     return (
       <Panel name={data.name} description={data.description}>
         <>
-          <Running />
+        {voteState === "running" ? <Running /> : <Finished />}
   
           <Chart
             enableVote={votable === "not-voted"}
@@ -69,23 +70,21 @@ const User = () => {
       </Panel>
     );
   }
-  if(voteState === "finished"){
-    return (<Panel name={data.name} description={data.description}>
-      <>
-        <Finished />
-
-        <Chart
-          enableVote={votable === "not-voted"}
-          userId={authContext.id}
-          userName={authContext.name}
-          votes={data.votes}
-        />
-
-        <Result />
-      </>
-      
-    </Panel>);
+  else{
+    return (
+      <Panel name={data.name} description={data.description}>
+        <>
+          <Finished />
+          <Chart
+            enableVote={votable === "not-voted"}
+            userId={authContext.id}
+            userName={authContext.name}
+            votes={data.votes}
+          />
+        </>
+        
+      </Panel>
+    )
   }
 };
-
 export default User;
